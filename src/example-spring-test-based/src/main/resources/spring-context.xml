@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context.xsd"
+    xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context">
+    
+    <context:component-scan base-package="com.lee.junit.test.service" />
+
+    <bean id="sessionFactoryApple" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="annotatedClasses" value="com.lee.junit.test.entity.Apple" />
+        <property name="dataSource">
+            <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+                <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://192.168.2.3:3306/apple" />
+                <property name="username" value="jimmy" />
+                <property name="password" value="jimmy" />
+            </bean>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+                <prop key="hibernate.show_sql">false</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="sessionFactoryPen" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="annotatedClasses" value="com.lee.junit.test.entity.Pen" />
+        <property name="dataSource">
+            <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+                <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://192.168.2.3:3306/pen" />
+                <property name="username" value="jimmy" />
+                <property name="password" value="jimmy" />
+            </bean>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+                <prop key="hibernate.show_sql">false</prop>
+            </props>
+        </property>
+    </bean>
+</beans>
